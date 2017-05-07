@@ -10,10 +10,12 @@ import { moveIn } from '../router.animations';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
   animations: [moveIn()],
-  host: { '[@moveIn]': '' }
 })
 export class LoginComponent implements OnInit {
 
+  @HostBinding('@moveIn') get moveIn() {
+    return null;
+  }
   error: any;
   constructor(public af: AngularFireAuth, private router: Router) {
     this.af.authState.subscribe(auth => {
